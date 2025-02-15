@@ -51,7 +51,7 @@ console.log(wordsSentence);
 console.log("\n");
 
 let examResults: number[] = [];
-examResults = [5, 3.2, 7, 8.6, 4, 10, 9.9, 0];
+examResults = [5, 3.2, 7, 8.6, 4, 10, 9.9, 0.3];
 
 let sortedExamResults = examResults.sort(function (resultA, resultB) {
   return resultA - resultB;
@@ -66,8 +66,9 @@ console.log(
   `Los examenes aprobados han sacado estas notas: ${joinedPassExamResults}`
 );
 
-let resultsSum = 0;
-examResults.forEach((examResult) => (resultsSum += examResult));
+const resultsSum = examResults.reduce(function (resultA, resultB) {
+  return resultA + resultB;
+});
 
 const averageResult = resultsSum / examResults.length;
 const averageRoundedResult = averageResult.toFixed(2);
