@@ -2,7 +2,8 @@ const years: number[] = [];
 for (let year = 2000; year <= 2025; year++) {
   years.push(year);
 }
-console.log(`Lista de años desde el 1999: ${years.join(", ")}`);
+const joinedYears = years.join(", ");
+console.log(`Lista de años desde el 1999: ${joinedYears}`);
 console.log("\n");
 
 const words = [
@@ -45,33 +46,37 @@ const words = [
   "diez",
   "Con",
 ];
-console.log(words.reverse().join(" "));
+const wordsSentence = words.reverse().join(" ");
+console.log(wordsSentence);
 console.log("\n");
 
 let examResults: number[] = [];
 examResults = [5, 3.2, 7, 8.6, 4, 10, 9.9, 0];
 
-let sortedExamResults = examResults.sort(function (a, b) {
-  return a - b;
+let sortedExamResults = examResults.sort(function (resultA, resultB) {
+  return resultA - resultB;
 });
 
-let passExamResult = sortedExamResults.filter(
+let passExamResults = sortedExamResults.filter(
   (sortedExamResults) => sortedExamResults >= 5
 );
-
-console.log(`Los examenes aprobados han sacado estas notas: ${passExamResult}`);
-
-let sumOfResults = 0;
-for (const individualExamResult of examResults) {
-  sumOfResults = sumOfResults + individualExamResult;
-}
-
-const averageExams = sumOfResults / examResults.length;
-
-console.log(`La nota media del examen ha sido ${averageExams.toFixed(2)}!`);
+const joinedPassExamResults = passExamResults.join(", ");
 
 console.log(
-  `La nota mas baja del examen ha sido un ${sortedExamResults.at(
-    0
-  )} y la nota mas alta un ${sortedExamResults.at(-1)}!`
+  `Los examenes aprobados han sacado estas notas: ${joinedPassExamResults}`
+);
+
+let resultsSum = 0;
+examResults.forEach((examResult) => (resultsSum += examResult));
+
+const averageResult = resultsSum / examResults.length;
+const averageRoundedResult = averageResult.toFixed(2);
+
+console.log(`La nota media del examen ha sido ${averageRoundedResult}!`);
+
+const lowestExamResult = sortedExamResults.at(0);
+const higherExamResult = sortedExamResults.at(-1);
+
+console.log(
+  `La nota mas baja del examen ha sido un ${lowestExamResult} y la nota mas alta un ${higherExamResult}!`
 );
